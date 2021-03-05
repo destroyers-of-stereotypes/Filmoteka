@@ -71,7 +71,7 @@ const fetchFilms = async (moviesURL) => {
 }
 //преобразование id жанров в названия
 function genresMovie(element) {
-    element.genre_ids = element.genre_ids.map(genreMovie => genreMovie = genres[genreMovie]);
+    element.genre_ids = element.genre_ids.map(genreMovie => genreMovie = genres[genreMovie]).join(',');
     return element;
 }
 //функция поиска по ключевому слову
