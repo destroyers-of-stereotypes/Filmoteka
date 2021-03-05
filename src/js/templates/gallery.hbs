@@ -1,9 +1,11 @@
 <ul>
+    {{#each this}}
     <li class="image-slider__slide swiper-slide">
-        <img src="" alt="" class="image-slider__image">
-        <h4 class="image-slider__title">Film name</h4>
-        <span class="image-slider__info">Film genre</span>
-        <span class="image-slider__info">Year</span>
-        <span class="image-slider__info--points">Points</span>
+        <img src="{{url}}" alt="" class="image-slider__image">
+        <h4 class="image-slider__title">{{title}}</h4>
+        <span class="image-slider__info">{{genre_ids}}</span>
+        <span class="image-slider__info">{{release_date}}</span>
+        <span class="image-slider__info--popularity">{{popularity}}</span>
     </li>
+    {{/each}}
 </ul>
