@@ -1,6 +1,6 @@
 //подключение axios (надо загрузить в проект)
 import axios from 'axios';
-
+import updateMarkupGallery from './updateMarkup';
 
 // данные для запроса
 const token = '6b8ef447c2ce3d010bfcc7f710d71588';
@@ -56,7 +56,6 @@ const fetchFilms = async moviesURL => {
       }
       const changeGenre = [...results].map(el => genresMovie(el));
       page += 1;
-      console.log(changeGenre)
       return changeGenre;
     })
     .catch(error => {
@@ -102,4 +101,8 @@ const movieID = 512896;
 fetchInfoFilm(movieID);
 
 //стартовый запрос популярных фильмов
-fetchFilms(popularMoviesURL);
+const a = fetchFilms(popularMoviesURL);
+updateMarkupGallery(a);
+// .then(films => {
+//   updateMarkupGallery(films);
+// });

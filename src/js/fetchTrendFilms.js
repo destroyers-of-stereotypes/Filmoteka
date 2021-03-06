@@ -33,7 +33,6 @@ function fetchMyFilms() {
       return [...results].map(el => {
         el.genre_ids = el.genre_ids.map(genreMovie => (genreMovie = genres[genreMovie])).join(',');
         page += 1;
-        console.log(el);
         return el;
       });
     })

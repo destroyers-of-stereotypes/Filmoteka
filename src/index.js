@@ -1,5 +1,6 @@
 import './sass/main.scss';
-// import './js/apiService';
-import fetchGallery from './js/fetchTrendFilms';
+import swiper from './js/components/swiper';
+import './js/apiService';
+// import fetchGallery from './js/fetchTrendFilms';
 
-fetchGallery()
+// fetchGallery()

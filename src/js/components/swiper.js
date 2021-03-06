@@ -9,19 +9,19 @@ const swiper = new Swiper('.swiper-container', {
   slidesPerColumn: 3,
   spaceBetween: 30,
   autoHeight: false,
-  breakpoints: {
-    768: {
-      slidesPerView: 2,
-      slidesPerColumn: 3,
-      spaceBetween: 30,
+  // breakpoints: {
+  //   768: {
+  //     slidesPerView: 2,
+  //     slidesPerColumn: 3,
+  //     spaceBetween: 30,
 
-    },
-    1030: {
-      slidesPerView: 3,
-      slidesPerColumn: 3,
-      spaceBetween: 30,
-    },
-  },
+  //   },
+  //   1030: {
+  //     slidesPerView: 3,
+  //     slidesPerColumn: 3,
+  //     spaceBetween: 30,
+  //   },
+  // },
   pagination: {
     el: '.swiper-pagination',
     clickable: true,
