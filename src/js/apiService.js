@@ -1,6 +1,6 @@
 //подключение axios (надо загрузить в проект)
 import axios from 'axios';
-// import updateMarkupGallery from './updateMarkup';
+
 
 // данные для запроса
 const token = '6b8ef447c2ce3d010bfcc7f710d71588';
@@ -33,7 +33,7 @@ const genres = {
 
 //форма поиска и слушатель на ней
 const inputSearch = document.querySelector('.search__input');
-inputSearch.addEventListener('input', onSearch);
+// inputSearch.addEventListener('input', onSearch);
 
 //предупредительное сообщение об ошибке
 const errorWarning = document.querySelector('.search__warning');
@@ -55,8 +55,8 @@ const fetchFilms = async moviesURL => {
         return;
       }
       const changeGenre = [...results].map(el => genresMovie(el));
-      console.log(changeGenre);
       page += 1;
+      console.log(changeGenre)
       return changeGenre;
     })
     .catch(error => {
@@ -99,14 +99,7 @@ const fetchInfoFilm = async movieID => {
   const response = await axios.get(infoMovieURL);
 };
 const movieID = 512896;
-// fetchInfoFilm(movieID);
+fetchInfoFilm(movieID);
 
 //стартовый запрос популярных фильмов
-// fetchFilms(popularMoviesURL);
-
-
-// function fetchGallery() {
-//     fetchFilms().then(data => {
-//         updateMarkupGallery(data);
-//     })
-// }
+fetchFilms(popularMoviesURL);

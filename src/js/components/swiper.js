@@ -5,8 +5,8 @@ import SwiperCore, { Navigation, Pagination } from 'swiper/core';
 
 SwiperCore.use([Navigation, Pagination]);
 const swiper = new Swiper('.swiper-container', {
-  slidesPerView: 1,
-  slidesPerColumn: 1,
+  slidesPerView: 3,
+  slidesPerColumn: 3,
   spaceBetween: 30,
   autoHeight: false,
   breakpoints: {
@@ -25,7 +25,6 @@ const swiper = new Swiper('.swiper-container', {
   pagination: {
     el: '.swiper-pagination',
     clickable: true,
-    // dynamicBullets: true,
     renderBullet: function (i, className) {
       return '<span class="' + className + '">' + (i + 1) + '</span>';
     },
