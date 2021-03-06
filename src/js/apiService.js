@@ -1,5 +1,6 @@
 //подключение axios (надо загрузить в проект)
 import axios from 'axios';
+// import gallery from '../js/templates/gallery.hbs';
 import updateMarkupGallery from './updateMarkup';
 
 // данные для запроса
@@ -33,7 +34,7 @@ const genres = {
 
 //форма поиска и слушатель на ней
 const inputSearch = document.querySelector('.search__input');
-// inputSearch.addEventListener('input', onSearch);
+inputSearch.addEventListener('input', onSearch);
 
 //предупредительное сообщение об ошибке
 const errorWarning = document.querySelector('.search__warning');
@@ -56,7 +57,8 @@ const fetchFilms = async moviesURL => {
       }
       const changeGenre = [...results].map(el => genresMovie(el));
       page += 1;
-      return changeGenre;
+      updateMarkupGallery(changeGenre);
+      return;
     })
     .catch(error => {
       if (error.response.status === 422) {
@@ -73,7 +75,7 @@ const fetchFilms = async moviesURL => {
 function genresMovie(element) {
   element.genre_ids = element.genre_ids
     .map(genreMovie => (genreMovie = genres[genreMovie]))
-    .join(',');
+    .join(', ');
   return element;
 }
 //функция поиска по ключевому слову
@@ -101,8 +103,4 @@ const movieID = 512896;
 fetchInfoFilm(movieID);
 
 //стартовый запрос популярных фильмов
-const a = fetchFilms(popularMoviesURL);
-updateMarkupGallery(a);
-// .then(films => {
-//   updateMarkupGallery(films);
-// });
+fetchFilms(popularMoviesURL);

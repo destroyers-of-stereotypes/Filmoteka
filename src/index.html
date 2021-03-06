@@ -8,8 +8,52 @@
   </head>
   <body>
     <main>
+      <!-- Main header -->
+      <div class="main-page" style=>
+        <header class="page-header">
+          <div class="container page-header__container">
+            <nav class="nav">
+              <div class="main-link logo">
+                <svg width="24" height="24" aria-label="Logo">
+                  <use
+                    class="icon-logo"
+                    href="./images/symbol-defs.svg#icon-logo"
+                  ></use>
+                </svg>
+                <span class="logo__studio">Filmoteka</span>
+              </div>
+                    <!-- Search-form --> 
+              <section class="search" style="display: none;">
+                <div class="search__form">
+                  <input
+                    class="search__input"
+                    type="text"
+                    name="query"
+                    autocomplete="off"
+                    placeholder="Поиск фильмов"
+                  />
+                  <div class="search__box"></div>
+                  <p class="search__warning"></p>
+                </div>
+              </section>
+              <div class="nav__container" id="menu-container" data-menu>
+                <ul class="menu">
+                  <li class="menu__item">
+                    <span class="link menu__link--current">HOME</span>
+                  </li>
+                  <li class="menu__item">
+                    <span class="link menu__link menu__link"
+                      >MY LIBRARY</span
+                    >
+                  </li>
+                </ul>
+              </div>
+            </nav>
+          </div>
+        </header>
+      </div>
       <!-- Library Header -->
-      <div class="library-page">
+      <div class="library-page" style="display: none;">
         <header class="page-header">
           <div class="container page-header__container">
             <nav class="nav">
@@ -56,24 +100,9 @@
           </div>
         </header>
       </div>
-      <!-- Search-form -->
-      <!-- <section class="search">
-        <div class="search__form">
-          <input
-            class="search__input"
-            type="text"
-            name="query"
-            autocomplete="off"
-            placeholder="Поиск фильмов"
-          />
-          <div class="search__box"></div>
-          <p class="search__warning"></p>
-        </div>
-      </section> -->
-
       <!-- Gallery container swiper-->
       <div class="image-container swiper-container">
-        <ul class="image-slider"></ul>
+        <ul class="image-slider swiper-wrapper"></ul>
         <div class="swiper-pagination"></div>
         <div class="swiper-button-prev"></div>
         <div class="swiper-button-next"></div>
