@@ -40,7 +40,7 @@ function openModal(event) {
   }
 
   //=========close modal by X-button===============
-  const closeBtnModal = document.querySelector('.closeBtnModal');
+  const closeBtnModal = document.querySelector('.closeModalBtn');
   closeBtnModal.addEventListener('click', closeModalBtn);
   function closeModalBtn(event) {
     instance.close();

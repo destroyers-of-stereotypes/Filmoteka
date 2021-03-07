@@ -1,9 +1,8 @@
-// '../sass/main.scss';
 import modalTpl from '../templates/modal.hbs';
 
 function updateModalMarkup(data) {
-  const markup = modalTpl(data);
-  return markup;
+  const markupModal = modalTpl(data);
+  return markupModal;
 }
 
 export default updateModalMarkup;
