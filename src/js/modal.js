@@ -5,8 +5,10 @@ import fetchInfoFilm from './apiService';
 
 console.log(`fetchInfoFilm: `, fetchInfoFilm());
 
-// function getFilmInfo(movieID) {
-//   const modal = basicLightbox.create(`fetchInfoFilm(movieID)`);
+// function getFilmInfo(movieIDs) {
+//   fetchInfoFilm(movieID).then(data => {
+//     const modal = basicLightbox.create(markupModal);
+//   });
 // }
 
 // let movieID = 512896;
@@ -24,6 +26,7 @@ function openModal(event) {
   }
   const filmId = event.target.dataset.id;
   const instance = basicLightbox.create(`fetchInfoFilm(filmId)`);
+  // const instance = basicLightbox.create(markupModal);
   instance.show();
   // console.log(`filmId: `, filmId);
   // console.log(`fetchInfoFilm(filmId): `, fetchInfoFilm(filmId));
