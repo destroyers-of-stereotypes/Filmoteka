@@ -115,7 +115,7 @@ const fetchInfoFilm = async movieID => {
       const markupModal = modalTpl(data);
       console.log(`markupModal: `, markupModal);
 
-      return markupModal;
+      // return markupModal;
       //==========================
     })
     .catch(error => {
