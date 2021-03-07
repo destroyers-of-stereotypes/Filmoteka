@@ -1,20 +1,13 @@
 import * as basicLightbox from 'basiclightbox';
 import 'basiclightbox/dist/basiclightbox.min.css';
-import searchMovie from './searchMovie';
-// import fetchInfoFilm from './apiService';
-import updateMarkup from './updateMarkup';
-// ('../sass/main.scss');
+import fetchInfoFilm from './apiService';
 //========================================
 
 function getFilmInfo(movie_id) {
-  // fetchInfoFilm(movieID).then(dataMovie => {
-
-  searchMovie(movie_id).then(dataMovie => {
+  fetchInfoFilm(movieID).then(dataMovie => {
     const cardMovie = updateMarkup(dataMovie);
     const modal = basicLightbox.create(cardMovie);
-    // const cartFilm = updateMarkup(film);
-    // const modal = basicLightbox.create(cartFilm);
-    // modal.onclick = modal.show();
+
     modal.show();
     window.addEventListener('keydown', closeModalByEscape);
     function closeModalByEscape(event) {
@@ -32,6 +25,20 @@ function openModal(event) {
   if (event.target.nodeName !== 'DIV') {
     return;
   }
-  basicLightbox.create(updateMarkup());
+  const instance = basicLightbox.create(`fetchInfoFilm()`);
   getFilmInfo(event.target.dataset.id);
+
+  window.addEventListener('keydown', closeModal);
+  const closeBtnModal = document.querySelector('.closeBtnModal');
+  closeBtnModal.addEventListener('click', closeModalBtn);
+
+  function closeModal(event) {
+    if (event.code === 'Escape') {
+      instance.close();
+      window.removeEventListener('keydown', closeModal);
+    }
+  }
+  function closeModalBtn(event) {
+    instance.close();
+  }
 }

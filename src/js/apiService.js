@@ -135,3 +135,5 @@ fetchInfoFilm(movieID);
 
 //стартовый запрос популярных фильмов
 fetchFilms(popularMoviesURL);
+
+export default fetchInfoFilm;
