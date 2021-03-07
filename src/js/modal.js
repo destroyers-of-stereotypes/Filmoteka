@@ -3,7 +3,7 @@ import 'basiclightbox/dist/basiclightbox.min.css';
 import fetchInfoFilm from './apiService';
 //========================================
 
-function getFilmInfo(movie_id) {
+function getFilmInfo(movieID) {
   fetchInfoFilm(movieID).then(dataMovie => {
     const cardMovie = updateMarkup(dataMovie);
     const modal = basicLightbox.create(cardMovie);
