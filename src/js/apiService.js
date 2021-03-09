@@ -124,27 +124,27 @@ const fetchInfoFilm = async movieID => {
       }
     });
 };
-const fetchInfoFilm = async movieID => {
-  const infoMovieURL = `https://api.themoviedb.org/3/movie/${movieID}?api_key=${token}`;
-  const response = await axios
-    .get(infoMovieURL)
-    .then(({ data }) => {
-      renderInfoFilm(data);
-      //здесь передавать результат в шаблон или во внешнюю функцию
-      // const qwe = test(response);
-      // console.log(qwe);
-    })
-    .catch(error => {
-      if (error.response.status === 404) {
-        console.log(message.notFound);
-      }
-      if (error.response.status >= 500) {
-        console.log(message.serverError);
-      } else {
-        console.log(error);
-      }
-    });
-};
+// const fetchInfoFilm = async movieID => {
+//   const infoMovieURL = `https://api.themoviedb.org/3/movie/${movieID}?api_key=${token}`;
+//   const response = await axios
+//     .get(infoMovieURL)
+//     .then(({ data }) => {
+//       renderInfoFilm(data);
+//       //здесь передавать результат в шаблон или во внешнюю функцию
+//       // const qwe = test(response);
+//       // console.log(qwe);
+//     })
+//     .catch(error => {
+//       if (error.response.status === 404) {
+//         console.log(message.notFound);
+//       }
+//       if (error.response.status >= 500) {
+//         console.log(message.serverError);
+//       } else {
+//         console.log(error);
+//       }
+//     });
+// };
 function renderInfoFilm(objFilm) {
   //вот здесь передается объект в шаблон
   // const qwe = test(objFilm);
