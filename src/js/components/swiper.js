@@ -4,7 +4,7 @@ import 'swiper/swiper-bundle.min.js';
 import SwiperCore, { Navigation, Pagination } from 'swiper/core';
 
 SwiperCore.use([Navigation, Pagination]);
-const swiper = new Swiper('.image-slider', {
+const swiper = new Swiper('.image-container', {
   speed: 0,
   direction: 'vertical',
   autoHeight: false,
@@ -13,7 +13,7 @@ const swiper = new Swiper('.image-slider', {
     el: '.swiper-pagination',
     clickable: true,
     renderBullet: function (i, className) {
-      return '<span class=“' + className + '“>' + (i + 1) + '</span>';
+      return '<span class="' + className + '">' + (i + 1) + '</span>';
     },
   },
   keyboard: {
@@ -23,25 +23,24 @@ const swiper = new Swiper('.image-slider', {
   },
   watchOverflow: true,
   breakpoints: {
-    320: {
-      slidesPerGroupSkip: 1,
-      slidesPerGroup: 1,
-      slidesPerView: 1,
-      slidesPerRow: 4,
-    },
-    768: {
-      slidesPerGroupSkip: 1,
-      slidesPerGroup: 1,
-      slidesPerView: 1,
-      slidesPerRow: 2,
-    },
-    1024: {
-      slidesPerGroupSkip: 1,
-      slidesPerGroup: 1,
-      slidesPerView: 1,
-      slidesPerRow: 3,
-    },
-  },
-});
+        320: {
+          slidesPerGroupSkip: 1,
+          slidesPerGroup: 1,
+          slidesPerView: 1,
+          slidesPerRow: 4,
+        },
+        768: {
+          slidesPerGroupSkip: 1,
+          slidesPerGroup: 1,
+          slidesPerView: 1,
+          slidesPerRow: 2,
+        },
+        1024: {
+          slidesPerGroupSkip: 1,
+          slidesPerGroup: 1,
+          slidesPerView: 1,
+          slidesPerRow: 3,
+        },
+}})
 
 export default swiper;
