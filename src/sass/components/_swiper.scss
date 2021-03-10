@@ -1,17 +1,40 @@
-// .image-container.swiper-container{
-//     padding-left: 20px;
-//     padding-right: 20px;
-//     padding-top: 20px;
-//   @media screen and (min-width: $tablet) {
-//     padding-left: 75px;
-//     padding-right: 75px;
-//     padding-top: 60px;
-//     }
-//     @media screen and (min-width: $desktop) {
-//       padding-left: 71px;
-//       padding-right: 71px;
-//         }
-// }
+.image-container.swiper-container{
+    padding-left: 20px;
+    padding-right: 20px;
+    padding-top: 20px;
+    width: 280px;
+    height: 1796px;
+  @media screen and (min-width: 768px) {
+    padding-left: 75px;
+    padding-right: 75px;
+    padding-top: 60px;
+    width: 626px;
+    height: 1840px;
+    }
+    @media screen and (min-width: 1024px) {
+      padding-left: 71px;
+      padding-right: 71px;
+      height: 1380px;
+      width: 882px;
+        }
+}
+.image-slider.swiper-wrapper {
+  flex-wrap: wrap;
+  flex-direction: row !important;
+}
+.image-slider__slide.swiper-slide{
+  height: 439px !important;
+    width: 280px !important;
+    margin-bottom: 10px;
+  @media screen and (min-width: 768px) {
+    width: 293px !important;
+    margin: 10px;
+      }
+@media screen and (min-width: 1024px) {
+    width: 274px !important;
+    margin: 10px;
+      }
+}
 // .swiper-container .swiper-wrapper > .swiper-slide {
 //   height: 439px;
 //   width: 274px;
@@ -74,6 +97,7 @@
   //=======
 //}
 
-// .swiper-pagination {
-//   margin: 30px;
-// }
+.swiper-container .swiper-pagination {
+  padding: 30px;
+
+}

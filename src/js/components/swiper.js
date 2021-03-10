@@ -7,6 +7,8 @@ SwiperCore.use([Navigation, Pagination]);
 const swiper = new Swiper('.image-container', {
   
   speed: 0,
+  direction: 'vertical',
+  autoHeight: false,
   simulateTouch: false,
   pagination: {
     el: '.swiper-pagination',
@@ -19,90 +21,27 @@ const swiper = new Swiper('.image-container', {
     enabled: true,
     onlyInViewport: true,
     pageUpDown: true,
-  }
-
-})
-
-// const swiper = new Swiper('.swiper-container', {
-//   spaceBetween: 20,
-//   autoHeight: false,
-//   slidesPerColumnFill: 'row',
-//   breakpoints: {
-//     320: {
-//       slidesPerGroupSkip: 1,
-//       slidesPerGroup: 4,
-//       slidesPerView: 1,
-//       slidesPerColumn: 4,
-//       slidesPerRow: 1,
-//     },
-//     768: {
-//       slidesPerGroupSkip: 1,
-//       slidesPerGroup: 6,
-//       slidesPerView: 2,
-//       slidesPerColumn: 3,
-//       spaceBetween: 30,
-//       slidesPerRow: 2,
-//     },
-//     1030: {
-//       slidesPerGroupSkip: 1,
-//       slidesPerGroup: 9,
-//       slidesPerView: 3,
-//       slidesPerColumn: 3,
-//       slidesPerRow: 3,
-//       spaceBetween: 30,
-//     },
-//   },
-
-
-  
-// const swiper = new Swiper('.swiper-container', {
-//   //speed: ?
-
-//   autoHeight: false,
-//   slidesPerColumnFill: 'row',
-//   //=====
-//   // effect: 'fade',
-//   // fadeEffect:{
-//   //   crossFade: true,
-//   // },
-//   // slidesPerGroupSkip: 1,
-//   // virtualTranslate: false, 
-//   // watchOverflow: true,
-//   // updateOnWindowResize: true,
-//   //========
-//   breakpoints: {
-//     320: {
-//       slidesPerGroupSkip: 1,
-//       // slidesPerGroup: 4,
-//       slidesPerView: 1,
-//       slidesPerColumn: 4,
-//       slidesPerRow: 1,
-//     },
-//     768: {
-//       slidesPerGroupSkip: 1,
-//       // slidesPerGroup: 6,
-//       slidesPerView: 2,
-//       slidesPerColumn: 3,
-//       spaceBetween: 30,
-//       slidesPerRow: 2,
-//     },
-//     1030: {
-//       //slidesPerGroupSkip: 1,
-//        slidesPerGroup: 3,
-//       // slidesPerView: 3,
-//       slidesPerColumn: 3,
-//       slidesPerRow: 3,
-//       //spaceBetween: 30,
-//     },
-//   },
-
-//   pagination: {
-//     el: '.swiper-pagination',
-//     clickable: true,
-//     renderBullet: function (i, className) {
-//       return '<span class="' + className + '">' + (i + 1) + '</span>';
-//     },
-//   },
-// });
+  },
+  watchOverflow: true,
+  breakpoints: {
+        320: {
+          slidesPerGroupSkip: 1,
+          slidesPerGroup: 1,
+          slidesPerView: 1,
+          slidesPerRow: 4,
+        },
+        768: {
+          slidesPerGroupSkip: 1,
+          slidesPerGroup: 1,
+          slidesPerView: 1,
+          slidesPerRow: 2,
+        },
+        1024: {
+          slidesPerGroupSkip: 1,
+          slidesPerGroup: 1,
+          slidesPerView: 1,
+          slidesPerRow: 3,
+        },
+}})
 
 export default swiper;
