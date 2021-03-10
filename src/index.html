@@ -65,6 +65,39 @@
       </div>
     </header>
   </div>
+  <!-- Library Header -->
+  <div class="library-page" style="display: none">
+    <header class="page-header">
+      <div class="container page-header__container">
+        <nav class="nav">
+          <div class="main-link logo">
+            <svg width="24" height="24" aria-label="Logo">
+              <use class="icon-logo" href="./images/symbol-defs.svg#icon-logo"></use>
+            </svg>
+            <span class="logo__studio">Filmoteka</span>
+          </div>
+          <button type="button" class="nav__button" data-menu-button aria-expanded="false"
+            aria-controls="menu-container">
+            WATCHED
+          </button>
+          <button type="button" class="nav__button" data-menu-button aria-expanded="false"
+            aria-controls="menu-container">
+            QUEUE
+          </button>
+          <div class="nav__container">
+            <ul class="menu">
+              <li class="menu__item">
+                <span class="link menu__link">HOME</span>
+              </li>
+              <li class="menu__item">
+                <span class="link menu__link menu__link--current">MY LIBRARY</span>
+              </li>
+            </ul>
+          </div>
+        </nav>
+      </div>
+    </header>
+  </div>
   <!-- Swiper -->
   <div class="image-container swiper-container">
     <ul class="image-slider swiper-wrapper"></ul>
@@ -85,62 +118,7 @@
         <a class="footer-page__info-area--students-link">GoIT Students</a>
       </p>
     </div>
-    </header>
-    </div>
-    <!-- Library Header -->
-    <div class="library-page" style="display: none">
-      <header class="page-header">
-        <div class="container page-header__container">
-          <nav class="nav">
-            <div class="main-link logo">
-              <svg width="24" height="24" aria-label="Logo">
-                <use class="icon-logo" href="./images/symbol-defs.svg#icon-logo"></use>
-              </svg>
-              <span class="logo__studio">Filmoteka</span>
-            </div>
-            <button type="button" class="nav__button" data-menu-button aria-expanded="false"
-              aria-controls="menu-container">
-              WATCHED
-            </button>
-            <button type="button" class="nav__button" data-menu-button aria-expanded="false"
-              aria-controls="menu-container">
-              QUEUE
-            </button>
-            <div class="nav__container">
-              <ul class="menu">
-                <li class="menu__item">
-                  <span class="link menu__link">HOME</span>
-                </li>
-                <li class="menu__item">
-                  <span class="link menu__link menu__link--current">MY LIBRARY</span>
-                </li>
-              </ul>
-            </div>
-          </nav>
-        </div>
-      </header>
-    </div>
-    <!-- Swiper -->
-    <div class="image-container swiper-container">
-      <ul class="image-slider swiper-wrapper"></ul>
-      <div class="swiper-pagination"></div>
-    </div>
-    <!-- footer -->
-    <footer class="footer-page">
-      <div class="footer-page__info-area">
-        <p class="footer-page__info-area--text">
-          &copy; 2021 | All Rights Reserved |
-        </p>
-        <p class="footer-page__info-area--text">
-          Developed with
-          <svg class="footer-page__info-area--icon">
-            <use href="./images/symbol-defs.svg#icon-heart"></use>
-          </svg>
-          by
-          <a class="footer-page__info-area--students-link">GoIT Students</a>
-        </p>
-      </div>
-    </footer>
+  </footer>
 </body>
 
 </html>
