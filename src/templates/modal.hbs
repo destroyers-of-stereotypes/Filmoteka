@@ -32,11 +32,9 @@
             <li class="modal-info__item">
                 <p class="modal-info__item-title">Genre</p>
                 <p class="modal-info__item-text">
-                    {{#if genres}}
+                    {{#each this.genres}}
                     <span>{{this.name}}</span>
-                    {{else}}
-                    <span>no genre info</span>
-                    {{/if}}
+                    {{/each}}
                 </p>
             </li>
         </ul>
