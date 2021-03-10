@@ -12,7 +12,7 @@
 
     <div class="modal-info">
         <h2 class="modal-info__movie-title">{{title}}</h2>
-        <ul class="modal-info__list">
+        {{!-- <ul class="modal-info__list">
             <li class="modal-info__item">
                 <p class="modal-info__item-title">Vote / Votes</p>
                 <p class="modal-info__item-text">
@@ -37,7 +37,28 @@
                     {{/each}}
                 </p>
             </li>
-        </ul>
+        </ul> --}}
+        <div class="modal-info__lists">
+            <ul class="modal-info__list">
+                <li class="modal-info__item-title">Vote / Votes</li>
+                <li class="modal-info__item-title">Popularity</li>
+                <li class="modal-info__item-title">Original title</li>
+                <li class="modal-info__item-title">Genre</li>
+            </ul>
+            <ul class="modal-info__list">
+                <li class="modal-info__item-text"><span
+                        class="modal-info__item-text--orange-bgr">{{vote_average}}</span>
+                    <span class="modal-info__item-title">/</span>
+                    <span>{{vote_count}}</span>
+                </li>
+                <li class="modal-info__item-text">{{popularity}}</li>
+                <li class="modal-info__item-text">{{original_title}}</li>
+                <li class="modal-info__item-text modal-info__item-text--genres">{{#each this.genres}}
+                    <span>{{this.name}}</span>
+                    {{/each}}
+                </li>
+            </ul>
+        </div>
         <div class="modal-info__about">
             <h3 class="modal-info__about-title">About</h3>
             <p class="modal-info__about-overview">

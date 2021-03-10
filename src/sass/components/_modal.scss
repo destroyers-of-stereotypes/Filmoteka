@@ -4,7 +4,7 @@
 .modal {
   background-color: getColor(white-text);
   max-height: auto;
-  max-width: 280px;
+  max-width: 240px;
   padding: 48px 20px 41px 20px;
 
   @media screen and (min-width: $tablet) {
@@ -14,7 +14,7 @@
   }
   @media screen and (min-width: $desktop) {
     display: flex;
-    width: 86%;
+    max-width: 882px;
     height: auto;
     padding: 50px 30px 40px 30px;
   }
@@ -49,7 +49,7 @@
 
   &--image {
     border-radius: 5px;
-    @media screen and (max-width: $to-mobile) {
+    @media screen and (max-width: $to-tablet) {
       width: 100%;
     }
   }
@@ -68,31 +68,53 @@
     margin-bottom: 20px;
   }
 
-  &__list {
+  // &__list {
+  //   margin-bottom: 20px;
+  // }
+  &__lists {
     margin-bottom: 20px;
+    display: flex;
   }
+  &__list:first-child {
+    margin-right: 40px;
+    @media screen and (min-width: $desktop) {
+      margin-right: 83px;
+    }
+  }
+
   &__item {
     display: flex;
     justify-content: space-between;
-    max-width: 215px;
+    // max-width: 215px;
+    // max-width: 100%;
 
     @media screen and (min-width: $desktop) {
       max-width: 260px;
     }
 
-    &:not(:last-child) {
-      margin-bottom: 10px;
-    }
+    // &:not(:last-child) {
+    //   margin-bottom: 10px;
+    // }
   }
 
   &__item-title {
     color: getColor(modal-grey_text);
+    width: 70px;
+    &:not(:last-child) {
+      margin-bottom: 10px;
+    }
+  }
+  &__item-text:not(:last-child) {
+    margin-bottom: 10px;
   }
   &__item-text--orange-bgr {
     background-color: getColor(modal-accent);
     padding: 1px 10px;
     border-radius: 5px;
     color: getColor(white-text);
+  }
+  &__item-text--genres {
+    display: block;
   }
 
   &__about {
@@ -135,10 +157,13 @@
 //   overflow-y: scroll;
 // }
 .modal__icon-close {
-  fill: red;
-  background-color: green;
-  width: 14px;
-  height: 14px;
+  // fill: red;
+  // background-color: green;
+  width: 20px;
+  height: 20px;
+  background-image: url('../images/close.svg');
+  background-repeat: no-repeat;
+  background-size: cover;
 }
 .closeModalBtn {
   position: absolute;
