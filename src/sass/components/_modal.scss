@@ -1,31 +1,148 @@
+// .basicLightbox--visible {
+//   overflow-y: scroll;
+// }
 .modal {
   background-color: getColor(white-text);
-  color: getColor(modal-text);
-  // max-height: auto;
+  max-height: auto;
   max-width: 280px;
   padding: 48px 20px 41px 20px;
+
   @media screen and (min-width: $tablet) {
     display: flex;
-    margin: auto;
     max-width: 618px;
-    // height: 562px;
     padding: 42px 29px 40px 28px;
   }
   @media screen and (min-width: $desktop) {
     display: flex;
-    // width: 882px;
-    max-width: 882px;
-    // height: 568px;
+    width: 86%;
+    height: auto;
     padding: 50px 30px 40px 30px;
+  }
+
+  // overflow-x: scroll;
+}
+
+.modal__img-container {
+  margin-bottom: 30px;
+
+  @media screen and (min-width: $tablet) and (max-width: $to-desktop) {
+    margin-right: 32px;
+  }
+
+  @media screen and (min-width: $desktop) {
+    margin-right: 30px;
+  }
+
+  //==============================================
+  @media screen and (max-width: $to-mobile) {
+    margin-bottom: 30px;
+    // max-width: 240px;
+    max-width: 100%;
+  }
+  @media screen and (min-width: $tablet) and (max-width: $to-desktop) {
+    max-width: 264px;
+  }
+  @media screen and (min-width: $desktop) {
+    max-width: 396px;
+    // height: 477.8px;
+  }
+
+  &--image {
+    border-radius: 5px;
+    @media screen and (max-width: $to-mobile) {
+      width: 100%;
+    }
+  }
+}
+
+.modal-info {
+  font-size: 12px;
+  font-weight: 500;
+  line-height: 1.33;
+  color: getColor(modal-text);
+
+  &__movie-title {
+    font-size: 30px;
+    line-height: 35px;
+
+    margin-bottom: 20px;
+  }
+
+  &__list {
+    margin-bottom: 20px;
+  }
+  &__item {
+    display: flex;
+    justify-content: space-between;
+    max-width: 215px;
+
+    @media screen and (min-width: $desktop) {
+      max-width: 260px;
+    }
+
+    &:not(:last-child) {
+      margin-bottom: 10px;
+    }
+  }
+
+  &__item-title {
+    color: getColor(modal-grey_text);
+  }
+  &__item-text--orange-bgr {
+    background-color: getColor(modal-accent);
+    padding: 1px 10px;
+    border-radius: 5px;
+    color: getColor(white-text);
+  }
+
+  &__about {
+    margin-bottom: 21px;
+  }
+  &__about-title {
+    margin-bottom: 10px;
+  }
+
+  &__btn {
+    text-align: center;
+    text-transform: uppercase;
+    padding: 14px 22px 12px 22px;
+    border: 1px solid getColor(modal-text);
+    border-radius: 5px;
+    background-color: getColor(white-text);
+    cursor: pointer;
+
+    &:not(:last-child) {
+      margin-right: 15px;
+    }
+
+    &:hover,
+    &:active,
+    &:focus {
+      border: 1px solid getColor(modal-accent);
+      border-radius: 5px;
+      background-color: getColor(modal-accent);
+      color: getColor(white-text);
+    }
   }
 }
 
 // .basicLightbox__placeholder {
-//   background-color: aqua;
-//   padding: 40px;
-//   margin: 0px 80px;
-//   width: 1000px;
+//   //   background-color: aqua;
+//   //   padding: 40px;
+//   //   margin: 0px 80px;
+//   //   width: 1000px;
+//   top: 20px;
+//   overflow-y: scroll;
 // }
-.closeModalBtn {
+.modal__icon-close {
   fill: red;
+  background-color: green;
+  width: 14px;
+  height: 14px;
+}
+.closeModalBtn {
+  position: absolute;
+  top: 18px;
+  right: 18px;
+  padding: 0;
 }
