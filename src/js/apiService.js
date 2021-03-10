@@ -116,7 +116,6 @@ const fetchInfoFilm = async movieID => {
   // console.log(infoMovieURL);
   try {
     const { data } = await axios.get(infoMovieURL);
-    //console.log(data);
     const markupModal = modalTpl(data);
     return markupModal;
   } catch (error) {
