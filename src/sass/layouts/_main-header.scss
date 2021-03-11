@@ -77,15 +77,13 @@
     font-size: 30px;
     line-height: 1.5;
     // letter-spacing: 1px;
-
-    position: relative;
-
     margin-left: 20px;
   }
 }
 
 .nav__link,
 .nav__link--current {
+  position: relative;
   font-size: 12px;
   line-height: 1.4;
   text-transform: uppercase;
@@ -99,8 +97,8 @@
     position: absolute;
     width: 35px;
     height: 3px;
-    right: 180px;
-    top: 74px;
+    right: 0px;
+    top: 14px;
     background-color: getColor(accent);
   }
 }
