@@ -6,6 +6,7 @@ $colors: (
   'footer-background': #f7f7f7,
   'footer-background-draft': red,
   'modal-grey_text': #8c8c8c,
+  'icon-color': #818181,
 );
 @function getColor($key) {
   @return map-get($colors, $key);
