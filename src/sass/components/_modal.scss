@@ -1,10 +1,116 @@
-.modal {
-  background-color: antiquewhite;
+.basicLightbox--visible .basicLightbox__placeholder .modal {
+  @media screen and (max-width: $to-tablet) {
+    transform: translate(0%, 15%);
+  }
+}
+.basicLightbox {
+  overflow: scroll;
 }
 
-.basicLightbox__placeholder {
-  background-color: aqua;
-  padding: 40px;
-  margin: 0px 80px;
-  width: 1000px;
+.modal {
+  background-color: getColor(white-text);
+  max-height: auto;
+  max-width: 240px;
+  padding: 48px 20px 40px 20px;
+
+  @media screen and (min-width: $tablet) {
+    display: flex;
+    max-width: 560px;
+    padding: 42px 30px 40px 28px;
+
+    &__conteiner {
+      width: calc((100% - 32px) / 2);
+    }
+  }
+  @media screen and (min-width: $desktop) {
+    display: flex;
+    max-width: 822px;
+    height: auto;
+    padding: 48px 30px 40px 30px;
+
+    &__conteiner {
+      width: calc((100% - 30px) / 2);
+    }
+  }
+}
+
+.modal__img-container {
+  @media screen and (max-width: $to-tablet) {
+    margin-bottom: 30px;
+  }
+  @media screen and (min-width: $tablet) and (max-width: $to-desktop) {
+    margin-right: 32px;
+  }
+
+  @media screen and (min-width: $desktop) {
+    margin-right: 30px;
+  }
+
+  &--image {
+    border-radius: 5px;
+    width: 100%;
+  }
+}
+
+.modal-info {
+  font-size: 12px;
+  font-weight: 500;
+  line-height: 1.33;
+  color: getColor(modal-text);
+
+  &__movie-title {
+    font-size: 30px;
+    line-height: 35px;
+
+    margin-bottom: 20px;
+  }
+
+  &__lists {
+    margin-bottom: 20px;
+    display: flex;
+  }
+  &__list:first-child {
+    margin-right: 40px;
+    @media screen and (min-width: $desktop) {
+      margin-right: 83px;
+    }
+  }
+
+  &__item {
+    display: flex;
+    justify-content: space-between;
+
+    @media screen and (min-width: $desktop) {
+      max-width: 260px;
+    }
+  }
+
+  &__item-title {
+    color: getColor(modal-grey_text);
+    width: 70px;
+    &:not(:last-child) {
+      margin-bottom: 10px;
+    }
+  }
+  &__item-text:not(:last-child) {
+    margin-bottom: 10px;
+  }
+  &__item-text--orange-bgr {
+    background-color: getColor(modal-accent);
+    padding: 1px 10px;
+    border-radius: 5px;
+    color: getColor(white-text);
+  }
+  &__item-text--genres {
+    display: grid;
+  }
+  &__item-text--each-genre:not(:last-child) {
+    margin-bottom: 5px;
+  }
+  &__about {
+    margin-bottom: 21px;
+  }
+  &__about-title {
+    margin-bottom: 10px;
+  }
 }
