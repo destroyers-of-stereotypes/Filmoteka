@@ -65,6 +65,7 @@ const fetchFilms = async (moviesURL, callbackTemplate, searchQuery = '') => {
 };
 //стартовый запрос популярных фильмов
 fetchFilms(popularMoviesURL, updateMarkupGallery);
+//localStorage.clear();
 
 //вспомогательные функции
 //преобразование id жанров в названия
