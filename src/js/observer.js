@@ -7,7 +7,6 @@ export default function contentObserver(element){
   const io = new IntersectionObserver((entries, observer) => {
     entries.forEach(entry => {
       if (entry.isIntersecting) {
-        console.log('ущу');
         onSearch()
       }
     });
