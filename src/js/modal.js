@@ -2,7 +2,8 @@ import * as basicLightbox from 'basiclightbox';
 import 'basiclightbox/dist/basiclightbox.min.css';
 import { fetchInfoFilm } from './apiService';
 import modalTpl from '../templates/modal.hbs';
-import local from './local';
+import { addWatchedFilms, arrayWatchedFilms } from './localWatchedFilms';
+import { addQueueFilms, arrayQueueFilms } from './localQueueFilms';
 const selectedMovie = document.querySelector('.image-slider');
 
 const showMovieModal = async movieId => {
@@ -14,13 +15,13 @@ const showMovieModal = async movieId => {
         .querySelector('.modal-info__btn-watched');
       instance.element().querySelector('.closeModalBtn').onclick =
         instance.close;
-      if (local.arrayWatchedFilms.includes(movieId)) {
+      if (arrayWatchedFilms.includes(movieId)) {
         watchedBtn.innerText = 'REMOVE FROM WATCHED';
         watchedBtn.classList.add('modal-info__btn-watched--active');
       }
       watchedBtn.onclick = () => {
-        local.addWatchedFilms(movieId);
-        console.log(local.arrayWatchedFilms);
+        addWatchedFilms(movieId);
+        console.log(arrayWatchedFilms);
         if (watchedBtn.classList.contains('modal-info__btn-watched--active')) {
           watchedBtn.innerText = 'ADD TO WATCHED';
           watchedBtn.classList.remove('modal-info__btn-watched--active');
@@ -29,7 +30,25 @@ const showMovieModal = async movieId => {
         watchedBtn.innerText = 'REMOVE FROM WATCHED';
         watchedBtn.classList.add('modal-info__btn-watched--active');
       };
-
+      // ! Просмотреные фильмы
+      const queueBtn = instance
+        .element()
+        .querySelector('.modal-info__btn-queue');
+      if (arrayQueueFilms.includes(movieId)) {
+        watchedBtn.innerText = 'REMOVE FROM WATCHED';
+        watchedBtn.classList.add('modal-info__btn-watched--active');
+      }
+      queueBtn.onclick = () => {
+        addQueueFilms(movieId);
+        console.log(arrayQueueFilms);
+        if (queueBtn.classList.contains('modal-info__btn-watched--active')) {
+          queueBtn.innerText = 'ADD TO QUEUE';
+          queueBtn.classList.remove('modal-info__btn-watched--active');
+          return;
+        }
+        queueBtn.innerText = 'REMOVE FROM QUEUE';
+        queueBtn.classList.add('modal-info__btn-watched--active');
+      };
       //
     },
   });
