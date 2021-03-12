@@ -10,24 +10,28 @@ import galleryItem from '../templates/galleryItem.hbs';
 import { popularMoviesURL, fetchInfoFilm, fetchFilms } from './apiService';
 
 let arrayQueueFilms = [];
-const localArrayWatchedFilms = localStorage.getItem('arrayWatchedFilm');
-if (localArrayWatchedFilms) {
-  arrayQueueFilms = JSON.parse(localArrayWatchedFilms);
+// const localArrayWatchedFilms = localStorage.getItem('arrayWatchedFilm');
+const localArrayQueueFilms = localStorage.getItem('arrayQueueFilms');
+if (localArrayQueueFilms) {
+  arrayQueueFilms = JSON.parse(localArrayQueueFilms);
 }
+// if (localArrayWatchedFilms) {
+//   arrayQueueFilms = JSON.parse(localArrayWatchedFilms);
+// }
+
 
 libraryBtn.addEventListener('click', () => {
   libraryRef.style.display = 'block';
   headerRef.style.display = 'none';
-  //galleryContainer.innerHTML = '';
   const libraryWatched = document.querySelector('.library-queue');
   libraryWatched.addEventListener('click', () => {
-    //galleryContainer.innerHTML = 'This section contains all the movies you watched';
-
+    galleryContainer.innerHTML = '';
     async function getElement(arr, parent) {
-      galleryContainer.innerHTML = '';
       if (arr.length === 0){
         galleryContainer.innerHTML = 'This section contains all the movies you watched';
+        return;
       }
+        galleryContainer.innerHTML = '';
       let itemElementList = await arr.reduce(async (acc, el) => {
         let list = await acc;
         const movieMarkup = await fetchInfoFilm(el, galleryItem);
@@ -44,7 +48,6 @@ libraryBtn.addEventListener('click', () => {
 homeBtn.addEventListener('click', () => {
   libraryRef.style.display = 'none';
   headerRef.style.display = 'block';
-  //fetchFilms(popularMoviesURL, updateMarkupGallery);
 });
 
 const addQueueFilms = movieId => {
