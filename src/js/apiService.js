@@ -24,6 +24,7 @@ function openInputSearch() {
 //слушатели кнопок хедера
 const homeBtn = document.querySelector('.library-home');
 homeBtn.addEventListener('click', e => {
+  inputSearch.classList.remove('search__input--active');
   resertPage();
   fetchFilms(popularMoviesURL, updateMarkupGallery)
 })
