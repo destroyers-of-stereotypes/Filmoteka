@@ -14,7 +14,7 @@
   &:not(:last-child) {
     margin-right: 15px;
   }
-  
+
   @media screen and (min-width: $tablet) {
     padding-left: 38px;
     padding-right: 38px;
@@ -101,6 +101,7 @@
   background-image: url('../images/close.svg');
   background-repeat: no-repeat;
   background-size: cover;
+  z-index: 22;
 }
 .closeModalBtn {
   position: absolute;
@@ -112,4 +113,3 @@
   outline-color: getColor(modal-accent);
   cursor: pointer;
 }
-

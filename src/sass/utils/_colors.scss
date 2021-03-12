@@ -8,6 +8,7 @@ $colors: (
   'modal-text': #000000,
   'modal-grey_text': #8c8c8c,
   'modal-accent': #ff6b01,
+  'modal-footer-title': rgba(215, 121, 17, 0.9),
   'icon-color': #818181,
 );
 @function getColor($key) {
