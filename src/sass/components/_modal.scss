@@ -1,12 +1,9 @@
 .basicLightbox--visible .basicLightbox__placeholder .modal-movie {
+  overflow: auto;
+
   @media screen and (max-width: $to-tablet) {
     transform: translate(0%, 15%);
-    // transform: translate(-33%, -20%) scale(1.3);
-    // position: absolute;
   }
-}
-.basicLightbox {
-  overflow: scroll;
 }
 
 .modal {
@@ -166,5 +163,4 @@
   top: 18px;
   right: 18px;
   padding: 0;
-
 }
