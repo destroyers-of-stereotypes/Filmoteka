@@ -68,10 +68,17 @@
 
 .lib__link,
 .lib__link--current {
+  position: relative;
+
   font-size: 12px;
   line-height: 1.4;
   text-transform: uppercase;
-  position: relative;
+
+  cursor: pointer;
+
+  &:hover {
+    color: getColor(accent);
+  }
 }
 
 .lib__link--current {
