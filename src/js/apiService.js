@@ -2,59 +2,36 @@ import axios from 'axios';
 import updateMarkupGallery from './updateMarkup';
 import debounce from 'lodash.debounce';
 import renderOnSearch from './renderOnSearch';
+import genres from './genres';
+import message from './messages';
 
 // данные для запроса
 const token = '6b8ef447c2ce3d010bfcc7f710d71588';
 let page = 1;
+let oldValueInput = '';
 const popularMoviesURL = `https://api.themoviedb.org/3/trending/movie/day`;
 
-//массив жанров с их идентификаторами
-const genres = {
-  28: 'Action',
-  12: 'Adventure',
-  16: 'Animation',
-  35: 'Comedy',
-  80: 'Crime',
-  99: 'Documentary',
-  18: 'Drama',
-  10751: 'Family',
-  14: 'Fantasy',
-  36: 'History',
-  27: 'Horror',
-  10402: 'Music',
-  9648: 'Mystery',
-  10749: 'Romance',
-  878: 'Science Fiction',
-  10770: 'TV Movie',
-  53: 'Thriller',
-  10752: 'War',
-  37: 'Western',
-};
-//форма поиска и слушатель на ней
+//слушатели поиска
 const inputSearch = document.querySelector('.search__input');
 inputSearch.addEventListener('input', debounce(onSearch, 300));
-
+const errorWarning = document.querySelector('.search__warning');
 const searchOpen = document.querySelector('.search__container');
 searchOpen.addEventListener('click', openInputSearch);
-
-const homeBtn = document.querySelector('.library-home');
-homeBtn.addEventListener('click', e => {
-  page = 1;
-  document.querySelector('.image-slider').innerHTML = '';
-  fetchFilms(popularMoviesURL, updateMarkupGallery)})
-//кнопка поиска закрывается только при пустом инпуте
 function openInputSearch() {
   inputSearch.classList.add('search__input--active');
 }
-//предупредительное сообщение об ошибке
-const errorWarning = document.querySelector('.search__warning');
-const message = {
-  manyMatches: 'Too many matches found. Please enter a more specific query!',
-  notFound: 'No results were found for your search',
-  incorrectQuery: 'You entered an incorrect movie name',
-  serverError:
-    'An error occurred on the server during processing. Please try again later',
-};
+
+//слушатели кнопок хедера
+const homeBtn = document.querySelector('.library-home');
+homeBtn.addEventListener('click', e => {
+  resertPage();
+  fetchFilms(popularMoviesURL, updateMarkupGallery)
+})
+
+const libraryBtn = document.querySelector('.my-library'); 
+libraryBtn.addEventListener('click', e => {
+  document.querySelector('.image-slider').innerHTML = 'Here you can store movies that you have already watched, or would like to view in the future.';
+})
 
 //базовая функция запроса списка фильмов
 const fetchFilms = async (moviesURL, callbackTemplate, searchQuery = '') => {
@@ -86,15 +63,11 @@ const fetchFilms = async (moviesURL, callbackTemplate, searchQuery = '') => {
     }
   }
 };
+//стартовый запрос популярных фильмов
+fetchFilms(popularMoviesURL, updateMarkupGallery);
+
+//вспомогательные функции
 //преобразование id жанров в названия
-// function genresMovie(element) {
-//   element.genre_ids = element.genre_ids
-//     .map(genreMovie => (genreMovie = genres[genreMovie]))
-//     .join(',');
-//   return element;
-// }
-//====================================================
-//дает возможность вывести на главной странице не больше 3ч жанров, а в модалке прописаны все
 function genresMovieShort(element) {
   element.genre_ids = element.genre_ids
     .map(genreMovie => (genreMovie = genres[genreMovie]))
@@ -102,19 +75,21 @@ function genresMovieShort(element) {
     .join(', ');
   return element;
 }
-//====================================================
+//передает результат запроса в шаблон
 function renderListFilms(arrayFilms, template) {
   return template(arrayFilms);
 }
+//очищает страницу 
+function resertPage (){
+  page = 1;
+  document.querySelector('.image-slider').innerHTML = '';
+}
 //функция поиска по ключевому слову
-let oldValueInput = '';
-
 function onSearch() {
   errorWarning.textContent = '';
   if (inputSearch.value.length >= 3) {
     if (inputSearch.value.length != oldValueInput.length) {
-      page = 1;
-      document.querySelector('.image-slider').innerHTML = '';
+      resertPage();
     }
     oldValueInput = inputSearch.value;
     let searchQuery = inputSearch.value.trim();
@@ -124,14 +99,24 @@ function onSearch() {
 
   if (inputSearch.value.length > 0 && inputSearch.value.length < 3) {
     errorWarning.textContent = message.manyMatches;
-    document.querySelector('.image-slider').innerHTML = '';
-    page = 1;
+    if (inputSearch.value.length > oldValueInput.length) {
+      return;
+    }
+    if (inputSearch.value.length < oldValueInput.length) {
+      resertPage();
+      oldValueInput = '';
+      fetchFilms(popularMoviesURL, updateMarkupGallery);
+      return;
+    }
+    oldValueInput = inputSearch.value;
   }
   if (inputSearch.value === '') {
     fetchFilms(popularMoviesURL, updateMarkupGallery);
     return;
   }
 }
+
+
 
 //функция запроса информации о фильме
 const fetchInfoFilm = async (movieID, template) => {
@@ -153,8 +138,5 @@ const fetchInfoFilm = async (movieID, template) => {
     }
   }
 };
-
-//стартовый запрос популярных фильмов
-fetchFilms(popularMoviesURL, updateMarkupGallery);
 
 export { popularMoviesURL, fetchInfoFilm, fetchFilms, onSearch};

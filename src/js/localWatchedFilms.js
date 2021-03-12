@@ -18,12 +18,14 @@ if (localArrayWatchedFilms) {
 libraryBtn.addEventListener('click', () => {
   libraryRef.style.display = 'block';
   headerRef.style.display = 'none';
-  galleryContainer.innerHTML = '';
+ // galleryContainer.innerHTML = '';
   const libraryWatched = document.querySelector('.library-watched');
   libraryWatched.addEventListener('click', () => {
-    galleryContainer.innerHTML = '';
-
     async function getElement(arr, parent) {
+      galleryContainer.innerHTML = '';
+    if (arr.length === 0){
+      galleryContainer.innerHTML = 'We cannot find anything in the bookmarks for this request';
+    }
       let itemElementList = await arr.reduce(async (acc, el) => {
         let list = await acc;
         const movieMarkup = await fetchInfoFilm(el, galleryItem);
@@ -32,7 +34,6 @@ libraryBtn.addEventListener('click', () => {
       }, '');
       return parent.insertAdjacentHTML('afterbegin', itemElementList);
     }
-
     getElement(arrayWatchedFilms, galleryContainer);
   });
 });
@@ -40,8 +41,8 @@ libraryBtn.addEventListener('click', () => {
 homeBtn.addEventListener('click', () => {
   libraryRef.style.display = 'none';
   headerRef.style.display = 'block';
-  galleryContainer.innerHTML = '';
-  fetchFilms(popularMoviesURL, updateMarkupGallery);
+  //galleryContainer.innerHTML = '';
+  //fetchFilms(popularMoviesURL, updateMarkupGallery);
 });
 
 const addWatchedFilms = movieId => {
