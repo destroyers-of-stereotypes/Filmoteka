@@ -1,6 +1,5 @@
 import axios from 'axios';
 import updateMarkupGallery from './updateMarkup';
-import modalTpl from '../templates/modal.hbs';
 import debounce from 'lodash.debounce';
 import renderOnSearch from './renderOnSearch';
 
@@ -35,12 +34,11 @@ const genres = {
 const inputSearch = document.querySelector('.search__input');
 inputSearch.addEventListener('input', debounce(onSearch, 300));
 
-
 const searchOpen = document.querySelector('.search__container');
-searchOpen.addEventListener('click',openInputSearch);
+searchOpen.addEventListener('click', openInputSearch);
 
 //кнопка поиска закрывается только при пустом инпуте
-function openInputSearch(){
+function openInputSearch() {
   inputSearch.classList.add('search__input--active');
 }
 //предупредительное сообщение об ошибке
@@ -55,9 +53,13 @@ const message = {
 
 //базовая функция запроса списка фильмов
 const fetchFilms = async (moviesURL, callbackTemplate, searchQuery = '') => {
-   try {
-     console.log(page);
-    const { data: { results } } = await axios.get(`${moviesURL}?api_key=${token}&page=${page}&query=${searchQuery}`);
+  try {
+    console.log(page);
+    const {
+      data: { results },
+    } = await axios.get(
+      `${moviesURL}?api_key=${token}&page=${page}&query=${searchQuery}`,
+    );
     console.log(results);
     if (results.length === 0) {
       errorWarning.textContent = message.notFound;
@@ -105,9 +107,9 @@ let oldValueInput = '';
 function onSearch() {
   errorWarning.textContent = '';
   if (inputSearch.value.length >= 3) {
-    if(inputSearch.value.length != oldValueInput.length ) {
-    page = 1;
-    document.querySelector('.image-slider').innerHTML = '';
+    if (inputSearch.value.length != oldValueInput.length) {
+      page = 1;
+      document.querySelector('.image-slider').innerHTML = '';
     }
     oldValueInput = inputSearch.value;
     let searchQuery = inputSearch.value.trim();
@@ -127,12 +129,12 @@ function onSearch() {
 }
 
 //функция запроса информации о фильме
-const fetchInfoFilm = async movieID => {
+const fetchInfoFilm = async (movieID, template) => {
   const infoMovieURL = `https://api.themoviedb.org/3/movie/${movieID}?api_key=${token}`;
   try {
     const { data } = await axios.get(infoMovieURL);
-    const markupModal = modalTpl(data);
-    return markupModal;
+
+    return template(data);
   } catch (error) {
     if (!error.response) {
       console.error(error);
@@ -150,8 +152,4 @@ const fetchInfoFilm = async movieID => {
 //стартовый запрос популярных фильмов
 fetchFilms(popularMoviesURL, updateMarkupGallery);
 
-
-
-
-export {fetchInfoFilm, fetchFilms, onSearch};
-
+export { popularMoviesURL, fetchInfoFilm, fetchFilms, onSearch };
