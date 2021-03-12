@@ -37,6 +37,11 @@ inputSearch.addEventListener('input', debounce(onSearch, 300));
 const searchOpen = document.querySelector('.search__container');
 searchOpen.addEventListener('click', openInputSearch);
 
+const homeBtn = document.querySelector('.library-home');
+homeBtn.addEventListener('click', e => {
+  page = 1;
+  document.querySelector('.image-slider').innerHTML = '';
+  fetchFilms(popularMoviesURL, updateMarkupGallery)})
 //кнопка поиска закрывается только при пустом инпуте
 function openInputSearch() {
   inputSearch.classList.add('search__input--active');
@@ -152,4 +157,4 @@ const fetchInfoFilm = async (movieID, template) => {
 //стартовый запрос популярных фильмов
 fetchFilms(popularMoviesURL, updateMarkupGallery);
 
-export { popularMoviesURL, fetchInfoFilm, fetchFilms, onSearch };
+export { popularMoviesURL, fetchInfoFilm, fetchFilms, onSearch};

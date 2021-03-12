@@ -55,4 +55,4 @@ const addWatchedFilms = movieId => {
   localStorage.setItem('arrayWatchedFilm', JSON.stringify(arrayWatchedFilms));
 };
 
-export default { addWatchedFilms, arrayWatchedFilms };
+export default { addWatchedFilms, arrayWatchedFilms};
