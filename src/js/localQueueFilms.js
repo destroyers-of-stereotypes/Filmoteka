@@ -14,18 +14,18 @@ let arrayQueueFilms = [];
 const localArrayQueueFilms = localStorage.getItem('arrayQueueFilms');
 if (localArrayQueueFilms) {
   arrayQueueFilms = JSON.parse(localArrayQueueFilms);
-
 }
 // if (localArrayWatchedFilms) {
 //   arrayQueueFilms = JSON.parse(localArrayWatchedFilms);
 // }
 
 
-libraryBtn.addEventListener('click', () => {
-  libraryRef.style.display = 'block';
-  headerRef.style.display = 'none';
-  const libraryWatched = document.querySelector('.library-queue');
-  libraryWatched.addEventListener('click', () => {
+// libraryBtn.addEventListener('click', () => {
+//   // libraryRef.style.display = 'block';
+//   // headerRef.style.display = 'none';
+
+  const libraryQueue = document.querySelector('.library-queue');
+  libraryQueue.addEventListener('click', () => {
     galleryContainer.innerHTML = '';
     async function getElement(arr, parent) {
       if (arr.length === 0){
@@ -41,16 +41,15 @@ libraryBtn.addEventListener('click', () => {
       }, '');
       return parent.insertAdjacentHTML('afterbegin', itemElementList);
     }
-
     getElement(arrayQueueFilms, galleryContainer);
-
   });
-});
 
-homeBtn.addEventListener('click', () => {
-  libraryRef.style.display = 'none';
-  headerRef.style.display = 'block';
-});
+//});
+
+// homeBtn.addEventListener('click', () => {
+//   libraryRef.style.display = 'none';
+//   headerRef.style.display = 'block';
+// });
 
 const addQueueFilms = movieId => {
   if (arrayQueueFilms.includes(movieId)) {

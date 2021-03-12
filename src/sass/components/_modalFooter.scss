@@ -1,6 +1,10 @@
 .basicLightbox--visible .basicLightbox__placeholder .modal-footer {
+  overflow: auto;
+  transform: translate(0%, 10%);
+
   @media screen and (max-width: $to-tablet) {
     transform: translate(0%, 10%) scale(1);
+    overflow: scroll;
   }
 
   @media screen and (min-width: $tablet) and (max-width: $to-desktop) {

@@ -84,9 +84,10 @@
 .logo {
   display: flex;
   cursor: pointer;
-
+  transition: all 3s ease-in-out;
   &:hover > .logo__svg {
     stroke: getColor(accent);
+    transform: skew(-20deg, 20deg);
   }
 
   &__svg {
