@@ -21,9 +21,13 @@ libraryBtn.addEventListener('click', () => {
   //galleryContainer.innerHTML = '';
   const libraryWatched = document.querySelector('.library-queue');
   libraryWatched.addEventListener('click', () => {
-    galleryContainer.innerHTML = 'This section contains all the movies you watched';
+    //galleryContainer.innerHTML = 'This section contains all the movies you watched';
 
     async function getElement(arr, parent) {
+      galleryContainer.innerHTML = '';
+      if (arr.length === 0){
+        galleryContainer.innerHTML = 'This section contains all the movies you watched';
+      }
       let itemElementList = await arr.reduce(async (acc, el) => {
         let list = await acc;
         const movieMarkup = await fetchInfoFilm(el, galleryItem);
