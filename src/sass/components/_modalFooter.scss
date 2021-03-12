@@ -1,0 +1,23 @@
+.basicLightbox--visible .basicLightbox__placeholder .modal-footer {
+  @media screen and (max-width: $to-tablet) {
+    position: absolute;
+    transform: translate(-46%, -50%);
+  }
+}
+// .basicLightbox {
+//   overflow: scroll;
+// }
+
+// .modal-footer__img-container {
+//   background-image: url('../images/team_4.jpg');
+
+//   // <img src="" alt="destroyers-of-stereotypes-TEAM-4"
+//   //         class="modal-footer__image modal__img-container--image" />
+// }
+
+.modal-footer__image {
+  width: 100%;
+  @media screen and (max-width: $to-tablet) {
+    margin-bottom: 30px;
+  }
+}

@@ -7,14 +7,12 @@ const openFooterModal = document.querySelector('#footer-modal');
 
 const showFooterModal = function () {
   const modal = basicLightbox.create(footerTpl());
-  console.log(`modal`, modal);
-
-  //   //         , {
-  //   //     onShow: instance => {
-  //   //       instance.element().querySelector('.closeModalBtn').onclick =
-  //   //         instance.close;
-  //   //     },
-  //   //   });
+  console.log(`modal`, modal, {
+    onShow: instance => {
+      instance.element().querySelector('.closeModalBtn').onclick =
+        instance.close;
+    },
+  });
   modal.show();
 
   const closeModalByEsc = function (event) {

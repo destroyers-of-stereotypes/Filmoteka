@@ -14,7 +14,7 @@
   &:not(:last-child) {
     margin-right: 15px;
   }
-  
+
   @media screen and (min-width: $tablet) {
     padding-left: 38px;
     padding-right: 38px;
@@ -111,5 +111,5 @@
   border: none;
   outline-color: getColor(modal-accent);
   cursor: pointer;
+  // z-index: 111111111;
 }
-

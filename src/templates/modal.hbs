@@ -1,5 +1,5 @@
-<div class="modal">
-    <div class="modal__img-container modal__conteiner">
+<div class="modal modal-movie">
+    <div class="modal__img-container modal__container">
         {{#if poster_path}}
         <img src="https://www.themoviedb.org/t/p/w220_and_h330_face{{poster_path}}"
             data-source="https://www.themoviedb.org/t/p/w220_and_h330_face{{poster_path}}" alt="{{title}}"
@@ -10,7 +10,7 @@
         {{/if}}
     </div>
 
-    <div class="modal-info modal__conteiner">
+    <div class="modal-info modal__container">
         <h2 class="modal-info__movie-title">{{title}}</h2>
         <div class="modal-info__lists">
             <ul class="modal-info__list">
