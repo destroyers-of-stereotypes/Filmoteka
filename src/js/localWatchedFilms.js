@@ -57,3 +57,4 @@ const addWatchedFilms = movieId => {
 };
 
 export { addWatchedFilms, arrayWatchedFilms };
+
