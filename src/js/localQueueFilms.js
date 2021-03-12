@@ -18,12 +18,16 @@ if (localArrayWatchedFilms) {
 libraryBtn.addEventListener('click', () => {
   libraryRef.style.display = 'block';
   headerRef.style.display = 'none';
-  galleryContainer.innerHTML = '';
+  //galleryContainer.innerHTML = '';
   const libraryWatched = document.querySelector('.library-queue');
   libraryWatched.addEventListener('click', () => {
-    galleryContainer.innerHTML = '';
+    //galleryContainer.innerHTML = 'This section contains all the movies you watched';
 
     async function getElement(arr, parent) {
+      galleryContainer.innerHTML = '';
+      if (arr.length === 0){
+        galleryContainer.innerHTML = 'This section contains all the movies you watched';
+      }
       let itemElementList = await arr.reduce(async (acc, el) => {
         let list = await acc;
         const movieMarkup = await fetchInfoFilm(el, galleryItem);
@@ -40,7 +44,7 @@ libraryBtn.addEventListener('click', () => {
 homeBtn.addEventListener('click', () => {
   libraryRef.style.display = 'none';
   headerRef.style.display = 'block';
-  fetchFilms(popularMoviesURL, updateMarkupGallery);
+  //fetchFilms(popularMoviesURL, updateMarkupGallery);
 });
 
 const addQueueFilms = movieId => {
