@@ -50,6 +50,7 @@
   },
   "dependencies": {
     "axios": "^0.21.1",
+    "back-to-top-arrow": "^0.1.1",
     "basiclightbox": "^5.0.4",
     "chart.js": "^2.9.4",
     "copy-webpack-plugin": "^6.4.1",
@@ -57,6 +58,9 @@
     "handlebars": "^4.7.6",
     "handlebars-loader": "^1.7.1",
     "handlebars-template-loader": "^1.0.0",
-    "lodash.debounce": "^4.0.8"
+    "imagemin": "^5.3.1",
+    "jquery": "^3.6.0",
+    "lodash.debounce": "^4.0.8",
+    "paginationjs": "^2.1.5"
   }
 }
