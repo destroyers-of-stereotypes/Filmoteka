@@ -50,6 +50,7 @@
   },
   "dependencies": {
     "axios": "^0.21.1",
+    "back-to-top-arrow": "^0.1.1",
     "basiclightbox": "^5.0.4",
     "copy-webpack-plugin": "^6.4.1",
     "core-js": "^3.6.5",
@@ -58,6 +59,7 @@
     "jquery": "^3.6.0",
     "lodash.debounce": "^4.0.8",
     "paginationjs": "^2.1.5",
-    "swiper": "^6.5.0"
+    "swiper": "^6.5.0",
+    "vanilla-back-to-top": "^7.2.1"
   }
 }
