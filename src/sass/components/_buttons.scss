@@ -101,6 +101,7 @@
   background-image: url('../images/close.svg');
   background-repeat: no-repeat;
   background-size: cover;
+  z-index: 22;
 }
 .closeModalBtn {
   position: absolute;
@@ -111,5 +112,4 @@
   border: none;
   outline-color: getColor(modal-accent);
   cursor: pointer;
-  // z-index: 111111111;
 }
