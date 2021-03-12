@@ -11,6 +11,7 @@ import { popularMoviesURL, fetchInfoFilm, fetchFilms } from './apiService';
 
 let arrayQueueFilms = [];
 const localArrayWatchedFilms = localStorage.getItem('arrayQueueFilms');
+
 if (localArrayWatchedFilms) {
   arrayQueueFilms = JSON.parse(localArrayWatchedFilms);
 }

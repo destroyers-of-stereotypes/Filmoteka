@@ -24,6 +24,8 @@ const showMovieModal = async movieId => {
         addWatchedFilms(movieId);
         console.log(arrayWatchedFilms);
         if (watchedBtn.classList.contains('modal-info__btn--active')) {
+
+
           watchedBtn.innerText = 'ADD TO WATCHED';
           watchedBtn.classList.remove('modal-info__btn--active');
           return;
@@ -50,6 +52,26 @@ const showMovieModal = async movieId => {
         }
         queueBtn.innerText = 'REMOVE FROM QUEUE';
         queueBtn.classList.add('modal-info__btn--active');
+      };
+
+      // ! Просмотреные фильмы
+      const queueBtn = instance
+        .element()
+        .querySelector('.modal-info__btn-queue');
+      if (arrayQueueFilms.includes(movieId)) {
+        watchedBtn.innerText = 'REMOVE FROM WATCHED';
+        watchedBtn.classList.add('modal-info__btn-watched--active');
+      }
+      queueBtn.onclick = () => {
+        addQueueFilms(movieId);
+        console.log(arrayQueueFilms);
+        if (queueBtn.classList.contains('modal-info__btn-watched--active')) {
+          queueBtn.innerText = 'ADD TO QUEUE';
+          queueBtn.classList.remove('modal-info__btn-watched--active');
+          return;
+        }
+        queueBtn.innerText = 'REMOVE FROM QUEUE';
+        queueBtn.classList.add('modal-info__btn-watched--active');
       };
       //
     },
