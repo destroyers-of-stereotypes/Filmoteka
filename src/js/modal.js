@@ -54,26 +54,6 @@ const showMovieModal = async movieId => {
         queueBtn.classList.add('modal-info__btn--active');
       };
 
-      // ! Просмотреные фильмы
-      const queueBtn = instance
-        .element()
-        .querySelector('.modal-info__btn-queue');
-      if (arrayQueueFilms.includes(movieId)) {
-        watchedBtn.innerText = 'REMOVE FROM WATCHED';
-        watchedBtn.classList.add('modal-info__btn-watched--active');
-      }
-      queueBtn.onclick = () => {
-        addQueueFilms(movieId);
-        console.log(arrayQueueFilms);
-        if (queueBtn.classList.contains('modal-info__btn-watched--active')) {
-          queueBtn.innerText = 'ADD TO QUEUE';
-          queueBtn.classList.remove('modal-info__btn-watched--active');
-          return;
-        }
-        queueBtn.innerText = 'REMOVE FROM QUEUE';
-        queueBtn.classList.add('modal-info__btn-watched--active');
-      };
-      //
     },
   });
   modal.show();
