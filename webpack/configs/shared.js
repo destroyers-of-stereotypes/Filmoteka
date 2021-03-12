@@ -73,7 +73,7 @@ module.exports = env => ({
     new FriendlyErrorsWebpackPlugin(),
     new WebpackBar(),
     new CopyPlugin({
-      patterns: [{ from: "favicon", to: "favicon" }],
+      patterns: [{ from: "favicon", to: "favicon" }, { from: "film", to: "film" }], 
     }),
   ],
 });

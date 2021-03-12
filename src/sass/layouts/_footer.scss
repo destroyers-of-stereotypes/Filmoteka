@@ -56,7 +56,7 @@
     &--students-link {
       text-decoration: underline;
       cursor: pointer;
-
+      text-shadow: 2px 2px 2px #ff6b08;
       &:hover {
         color: getColor(accent);
       }
