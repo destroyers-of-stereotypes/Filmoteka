@@ -17,39 +17,43 @@ const showMovieModal = async movieId => {
         instance.close;
       if (arrayWatchedFilms.includes(movieId)) {
         watchedBtn.innerText = 'REMOVE FROM WATCHED';
-        watchedBtn.classList.add('modal-info__btn-watched--active');
+        watchedBtn.classList.add('modal-info__btn--active');
       }
+
       watchedBtn.onclick = () => {
         addWatchedFilms(movieId);
         console.log(arrayWatchedFilms);
-        if (watchedBtn.classList.contains('modal-info__btn-watched--active')) {
+        if (watchedBtn.classList.contains('modal-info__btn--active')) {
+
+
           watchedBtn.innerText = 'ADD TO WATCHED';
-          watchedBtn.classList.remove('modal-info__btn-watched--active');
+          watchedBtn.classList.remove('modal-info__btn--active');
           return;
         }
         watchedBtn.innerText = 'REMOVE FROM WATCHED';
-        watchedBtn.classList.add('modal-info__btn-watched--active');
+        watchedBtn.classList.add('modal-info__btn--active');
       };
       // ! Просмотреные фильмы
       const queueBtn = instance
         .element()
         .querySelector('.modal-info__btn-queue');
       if (arrayQueueFilms.includes(movieId)) {
-        watchedBtn.innerText = 'REMOVE FROM WATCHED';
-        watchedBtn.classList.add('modal-info__btn-watched--active');
+        console.log(queueBtn);
+        queueBtn.innerText = 'REMOVE FROM QUEUE';
+        queueBtn.classList.add('modal-info__btn--active');
       }
       queueBtn.onclick = () => {
         addQueueFilms(movieId);
         console.log(arrayQueueFilms);
-        if (queueBtn.classList.contains('modal-info__btn-watched--active')) {
+        if (queueBtn.classList.contains('modal-info__btn--active')) {
           queueBtn.innerText = 'ADD TO QUEUE';
-          queueBtn.classList.remove('modal-info__btn-watched--active');
+          queueBtn.classList.remove('modal-info__btn--active');
           return;
         }
         queueBtn.innerText = 'REMOVE FROM QUEUE';
-        queueBtn.classList.add('modal-info__btn-watched--active');
+        queueBtn.classList.add('modal-info__btn--active');
       };
-      //
+
     },
   });
   modal.show();

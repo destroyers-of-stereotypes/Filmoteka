@@ -10,7 +10,8 @@ import galleryItem from '../templates/galleryItem.hbs';
 import { popularMoviesURL, fetchInfoFilm, fetchFilms } from './apiService';
 
 let arrayQueueFilms = [];
-const localArrayWatchedFilms = localStorage.getItem('arrayWatchedFilm');
+const localArrayWatchedFilms = localStorage.getItem('arrayQueueFilms');
+
 if (localArrayWatchedFilms) {
   arrayQueueFilms = JSON.parse(localArrayWatchedFilms);
 }
@@ -38,6 +39,7 @@ libraryBtn.addEventListener('click', () => {
     }
 
     getElement(arrayQueueFilms, galleryContainer);
+
   });
 });
 
