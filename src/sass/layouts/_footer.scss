@@ -1,4 +1,12 @@
 .footer-page {
+  //============================
+  //==for fixed footer==========
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 1;
+  //============================
   /* общие стили для подвала сайта */
   background-color: getColor(footer-background);
   color: getColor(footer-text);
