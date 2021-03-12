@@ -40,6 +40,7 @@ libraryBtn.addEventListener('click', () => {
 homeBtn.addEventListener('click', () => {
   libraryRef.style.display = 'none';
   headerRef.style.display = 'block';
+  galleryContainer.innerHTML = '';
   fetchFilms(popularMoviesURL, updateMarkupGallery);
 });
 
@@ -55,4 +56,5 @@ const addWatchedFilms = movieId => {
   localStorage.setItem('arrayWatchedFilm', JSON.stringify(arrayWatchedFilms));
 };
 
-export default { addWatchedFilms, arrayWatchedFilms};
+export { addWatchedFilms, arrayWatchedFilms };
+
