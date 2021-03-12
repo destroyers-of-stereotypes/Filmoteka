@@ -79,12 +79,7 @@
   display: flex;
   cursor: pointer;
 
-  &:hover {
-    color: getColor(accent);
-  }
-
   &:hover > .logo__svg {
-    color: getColor(accent);
     stroke: getColor(accent);
   }
 

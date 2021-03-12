@@ -4,4 +4,3 @@ import './js/modal';
 import './js/localWatchedFilms';
 import './js/localQueueFilms';
 import './js/footerModal';
-

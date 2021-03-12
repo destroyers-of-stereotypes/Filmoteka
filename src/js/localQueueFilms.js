@@ -14,6 +14,7 @@ let arrayQueueFilms = [];
 const localArrayQueueFilms = localStorage.getItem('arrayQueueFilms');
 if (localArrayQueueFilms) {
   arrayQueueFilms = JSON.parse(localArrayQueueFilms);
+
 }
 // if (localArrayWatchedFilms) {
 //   arrayQueueFilms = JSON.parse(localArrayWatchedFilms);
@@ -42,6 +43,7 @@ libraryBtn.addEventListener('click', () => {
     }
 
     getElement(arrayQueueFilms, galleryContainer);
+
   });
 });
 
