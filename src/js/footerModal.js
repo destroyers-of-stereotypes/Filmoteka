@@ -23,8 +23,8 @@ function showFooterModal() {
   const closeModalByEsc = function (event) {
     if (event.code === 'Escape') {
       modal.close();
-      window.removeEventListener('keydown', closeModalEsc);
+      window.removeEventListener('up', closeModalByEsc);
     }
   };
-  document.addEventListener('keydown', closeModalByEsc);
+  window.addEventListener('keydown', closeModalByEsc);
 }
