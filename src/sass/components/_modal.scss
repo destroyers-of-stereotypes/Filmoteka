@@ -115,4 +115,56 @@
   &__about-title {
     margin-bottom: 10px;
   }
+
+  &__btn-watched,
+  &__btn-queue {
+    text-align: center;
+    text-transform: uppercase;
+    padding: 14px 22px 12px 22px;
+    border: 1px solid getColor(modal-text);
+    border-radius: 5px;
+    background-color: getColor(white-text);
+    cursor: pointer;
+
+    &:not(:last-child) {
+      margin-right: 15px;
+    }
+
+    &:hover,
+    &:active,
+    &:focus {
+      border: 1px solid getColor(modal-accent);
+      border-radius: 5px;
+      background-color: getColor(modal-accent);
+      color: getColor(white-text);
+    }
+  }
+}
+.modal-info__btn-watched--active {
+  background-color: #ff6b01;
+  color: #fff;
+}
+// .basicLightbox__placeholder {
+//   //   background-color: aqua;
+//   //   padding: 40px;
+//   //   margin: 0px 80px;
+//   //   width: 1000px;
+//   top: 20px;
+//   overflow-y: scroll;
+// }
+.modal__icon-close {
+  // fill: red;
+  // background-color: green;
+  width: 20px;
+  height: 20px;
+  background-image: url('../images/close.svg');
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+.closeModalBtn {
+  position: absolute;
+  top: 18px;
+  right: 18px;
+  padding: 0;
+
 }
