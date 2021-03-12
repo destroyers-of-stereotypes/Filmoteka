@@ -18,10 +18,10 @@ if (localArrayWatchedFilms) {
 libraryBtn.addEventListener('click', () => {
   libraryRef.style.display = 'block';
   headerRef.style.display = 'none';
-  galleryContainer.innerHTML = '';
+  //galleryContainer.innerHTML = '';
   const libraryWatched = document.querySelector('.library-queue');
   libraryWatched.addEventListener('click', () => {
-    galleryContainer.innerHTML = '';
+    galleryContainer.innerHTML = 'This section contains all the movies you watched';
 
     async function getElement(arr, parent) {
       let itemElementList = await arr.reduce(async (acc, el) => {
@@ -40,7 +40,7 @@ libraryBtn.addEventListener('click', () => {
 homeBtn.addEventListener('click', () => {
   libraryRef.style.display = 'none';
   headerRef.style.display = 'block';
-  fetchFilms(popularMoviesURL, updateMarkupGallery);
+  //fetchFilms(popularMoviesURL, updateMarkupGallery);
 });
 
 const addQueueFilms = movieId => {

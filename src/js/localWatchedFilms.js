@@ -18,11 +18,10 @@ if (localArrayWatchedFilms) {
 libraryBtn.addEventListener('click', () => {
   libraryRef.style.display = 'block';
   headerRef.style.display = 'none';
-  galleryContainer.innerHTML = '';
+ // galleryContainer.innerHTML = '';
   const libraryWatched = document.querySelector('.library-watched');
   libraryWatched.addEventListener('click', () => {
-    galleryContainer.innerHTML = '';
-
+    galleryContainer.innerHTML = 'We cannot find anything in the bookmarks for this request';
     async function getElement(arr, parent) {
       let itemElementList = await arr.reduce(async (acc, el) => {
         let list = await acc;
@@ -40,8 +39,8 @@ libraryBtn.addEventListener('click', () => {
 homeBtn.addEventListener('click', () => {
   libraryRef.style.display = 'none';
   headerRef.style.display = 'block';
-  galleryContainer.innerHTML = '';
-  fetchFilms(popularMoviesURL, updateMarkupGallery);
+  //galleryContainer.innerHTML = '';
+  //fetchFilms(popularMoviesURL, updateMarkupGallery);
 });
 
 const addWatchedFilms = movieId => {
