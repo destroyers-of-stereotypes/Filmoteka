@@ -4,6 +4,7 @@ import debounce from 'lodash.debounce';
 import renderOnSearch from './renderOnSearch';
 import genres from './genres';
 import message from './messages';
+import refs from './refs'
 
 // данные для запроса
 const token = '6b8ef447c2ce3d010bfcc7f710d71588';
@@ -12,26 +13,17 @@ let oldValueInput = '';
 const popularMoviesURL = `https://api.themoviedb.org/3/trending/movie/day`;
 
 //слушатели поиска
-const inputSearch = document.querySelector('.search__input');
-inputSearch.addEventListener('input', debounce(onSearch, 300));
-const errorWarning = document.querySelector('.search__warning');
-const searchOpen = document.querySelector('.search__container');
-searchOpen.addEventListener('click', openInputSearch);
-function openInputSearch() {
-  inputSearch.classList.add('search__input--active');
-}
+refs.inputSearch.addEventListener('input', debounce(onSearch, 300));
+refs.searchOpen.addEventListener('click', openInputSearch);
 
 //слушатели кнопок хедера
-const homeBtn = document.querySelector('.library-home');
-homeBtn.addEventListener('click', e => {
-  inputSearch.classList.remove('search__input--active');
+refs.homeBtn.addEventListener('click', e => {
+  refs.inputSearch.classList.remove('search__input--active');
   resertPage();
   fetchFilms(popularMoviesURL, updateMarkupGallery)
 })
-
-const libraryBtn = document.querySelector('.my-library'); 
-libraryBtn.addEventListener('click', e => {
-  document.querySelector('.image-slider').innerHTML = 'Here you can store movies that you have already watched, or would like to view in the future.';
+refs.libraryBtn.addEventListener('click', e => {
+  refs.galleryContainer.innerHTML = message.libraryMain;
 })
 
 //базовая функция запроса списка фильмов
@@ -45,20 +37,18 @@ const fetchFilms = async (moviesURL, callbackTemplate, searchQuery = '') => {
     );
     console.log(results);
     if (results.length === 0) {
-      errorWarning.textContent = message.notFound;
+      refs.errorWarning.textContent = message.notFound;
       return;
     }
-    //то что было раньше - при загрузке страници все жанры отображались
-    // const changeGenre = [...results].map(el => genresMovie(el));
     const changeGenre = [...results].map(el => genresMovieShort(el));
     page += 1;
     return renderListFilms(changeGenre, callbackTemplate);
   } catch (error) {
     if (error.response.status === 422) {
-      errorWarning.textContent = message.incorrectQuery;
+      refs.errorWarning.textContent = message.incorrectQuery;
     }
     if (error.response.status >= 500) {
-      errorWarning.textContent = message.serverError;
+      refs.errorWarning.textContent = message.serverError;
     } else {
       console.log(error);
     }
@@ -66,9 +56,12 @@ const fetchFilms = async (moviesURL, callbackTemplate, searchQuery = '') => {
 };
 //стартовый запрос популярных фильмов
 fetchFilms(popularMoviesURL, updateMarkupGallery);
-//localStorage.clear();
 
 //вспомогательные функции
+//открытие поиска
+function openInputSearch() {
+  refs.inputSearch.classList.add('search__input--active');
+}
 //преобразование id жанров в названия
 function genresMovieShort(element) {
   element.genre_ids = element.genre_ids
@@ -84,43 +77,40 @@ function renderListFilms(arrayFilms, template) {
 //очищает страницу 
 function resertPage (){
   page = 1;
-  document.querySelector('.image-slider').innerHTML = '';
+  refs.galleryContainer.innerHTML = '';
 }
-//функция поиска по ключевому слову
+//поиск по ключевому слову
 function onSearch() {
-  errorWarning.textContent = '';
-  if (inputSearch.value.length >= 3) {
-    if (inputSearch.value.length != oldValueInput.length) {
+  refs.errorWarning.textContent = '';
+  if (refs.inputSearch.value.length >= 3) {
+    if (refs.inputSearch.value.length != oldValueInput.length) {
       resertPage();
     }
-    oldValueInput = inputSearch.value;
-    let searchQuery = inputSearch.value.trim();
+    oldValueInput = refs.inputSearch.value;
+    let searchQuery = refs.inputSearch.value.trim();
     const searchMoviesURL = `https://api.themoviedb.org/3/search/movie`;
     fetchFilms(searchMoviesURL, renderOnSearch, searchQuery);
   }
 
-  if (inputSearch.value.length > 0 && inputSearch.value.length < 3) {
-    errorWarning.textContent = message.manyMatches;
-    if (inputSearch.value.length > oldValueInput.length) {
+  if (refs.inputSearch.value.length > 0 && refs.inputSearch.value.length < 3) {
+    refs.errorWarning.textContent = message.manyMatches;
+    if (refs.inputSearch.value.length > oldValueInput.length) {
       return;
     }
-    if (inputSearch.value.length < oldValueInput.length) {
+    if (refs.inputSearch.value.length < oldValueInput.length) {
       resertPage();
       oldValueInput = '';
       fetchFilms(popularMoviesURL, updateMarkupGallery);
       return;
     }
-    oldValueInput = inputSearch.value;
+    oldValueInput = refs.inputSearch.value;
   }
-  if (inputSearch.value === '') {
+  if (refs.inputSearch.value === '') {
     fetchFilms(popularMoviesURL, updateMarkupGallery);
     return;
   }
 }
-
-
-
-//функция запроса информации о фильме
+//базовый запрос информации о фильме
 const fetchInfoFilm = async (movieID, template) => {
   const infoMovieURL = `https://api.themoviedb.org/3/movie/${movieID}?api_key=${token}`;
   try {

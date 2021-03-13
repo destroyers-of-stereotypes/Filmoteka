@@ -4,7 +4,7 @@ import { fetchInfoFilm } from './apiService';
 import modalTpl from '../templates/modal.hbs';
 import { addWatchedFilms, arrayWatchedFilms } from './localWatchedFilms';
 import { addQueueFilms, arrayQueueFilms } from './localQueueFilms';
-const selectedMovie = document.querySelector('.image-slider');
+import refs from './refs';
 
 const showMovieModal = async movieId => {
   const movieMarkup = await fetchInfoFilm(movieId, modalTpl);
@@ -22,10 +22,7 @@ const showMovieModal = async movieId => {
 
       watchedBtn.onclick = () => {
         addWatchedFilms(movieId);
-        console.log(arrayWatchedFilms);
         if (watchedBtn.classList.contains('modal-info__btn--active')) {
-
-
           watchedBtn.innerText = 'ADD TO WATCHED';
           watchedBtn.classList.remove('modal-info__btn--active');
           return;
@@ -38,13 +35,11 @@ const showMovieModal = async movieId => {
         .element()
         .querySelector('.modal-info__btn-queue');
       if (arrayQueueFilms.includes(movieId)) {
-        console.log(queueBtn);
         queueBtn.innerText = 'REMOVE FROM QUEUE';
         queueBtn.classList.add('modal-info__btn--active');
       }
       queueBtn.onclick = () => {
         addQueueFilms(movieId);
-        console.log(arrayQueueFilms);
         if (queueBtn.classList.contains('modal-info__btn--active')) {
           queueBtn.innerText = 'ADD TO QUEUE';
           queueBtn.classList.remove('modal-info__btn--active');
@@ -65,8 +60,7 @@ const showMovieModal = async movieId => {
     }
   }
 };
-
-selectedMovie.addEventListener('click', event => {
+refs.galleryContainer.addEventListener('click', event => {
   if (event.target.parentNode.nodeName === 'LI')
     showMovieModal(event.target.parentNode.dataset.id);
 });
