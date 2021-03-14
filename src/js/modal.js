@@ -2,8 +2,7 @@ import * as basicLightbox from 'basiclightbox';
 import 'basiclightbox/dist/basiclightbox.min.css';
 import { fetchInfoFilm } from './apiService';
 import modalTpl from '../templates/modal.hbs';
-import { addWatchedFilms, arrayWatchedFilms } from './localWatchedFilms';
-import { addQueueFilms, arrayQueueFilms } from './localQueueFilms';
+import { addFilms, arrayQueueFilms, arrayWatchedFilms } from './localFilms';
 import refs from './refs';
 
 const showMovieModal = async movieId => {
@@ -21,7 +20,8 @@ const showMovieModal = async movieId => {
       }
 
       watchedBtn.onclick = () => {
-        addWatchedFilms(movieId);
+        let watchedLocalKey = 'arrayWatchedFilms';
+        addFilms(movieId, arrayWatchedFilms, watchedLocalKey)
         if (watchedBtn.classList.contains('modal-info__btn--active')) {
           watchedBtn.innerText = 'ADD TO WATCHED';
           watchedBtn.classList.remove('modal-info__btn--active');
@@ -39,7 +39,8 @@ const showMovieModal = async movieId => {
         queueBtn.classList.add('modal-info__btn--active');
       }
       queueBtn.onclick = () => {
-        addQueueFilms(movieId);
+        let queueLocalKey = 'arrayQueueFilms';
+        addFilms(movieId, arrayQueueFilms, queueLocalKey)
         if (queueBtn.classList.contains('modal-info__btn--active')) {
           queueBtn.innerText = 'ADD TO QUEUE';
           queueBtn.classList.remove('modal-info__btn--active');
