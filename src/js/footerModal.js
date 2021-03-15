@@ -1,16 +1,13 @@
 import * as basicLightbox from 'basiclightbox';
 import 'basiclightbox/dist/basiclightbox.min.css';
-
 import footerTpl from '../templates/footerModal.hbs';
+import refs from './refs';
 
-const openFooterModal = document.querySelector('#footer-modal');
-openFooterModal.addEventListener('click', showFooterModal);
+refs.openFooterModal.addEventListener('click', showFooterModal);
 
 function showFooterModal() {
   const modal = basicLightbox.create(footerTpl());
-  console.log(`modal`, modal);
   modal.show();
-
   const closeModalByBtn = function (event) {
     if (event.target.nodeName === 'BUTTON') {
       modal.close();
